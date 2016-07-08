@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+  <div class='product'>
+    <h3><img src='<%= product.image %>' height='50' width='50'>  <%= product.name %></h3>
+    <h4>Country of Origin: <%= product.country_of_origin %> </h4>
+    <h5><%= product.description %></h5>
+  </div>
+<% end %>
