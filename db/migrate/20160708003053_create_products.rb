@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :image
       t.string :description
       t.string :country_of_origin
+      t.string :flag_image
 
       t.timestamps null: false
     end

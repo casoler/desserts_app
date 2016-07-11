@@ -1,11 +1,10 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.all.sort_by { |product| product.name }
   end
 
   def show
-    num_products = Product.count
-    @product = Product.find(rand(1..num_products))
+    @product = Product.find(params[:id])
   end
 end
