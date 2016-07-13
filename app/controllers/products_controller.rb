@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
       flag_image: params[:flag_image]
     )
 
-    flash[:success] = "Dessert successfully updated!"
+    flash[:success] = "Dessert <strong>successfully</strong> updated!"
     redirect_to "/products/#{product.id}"
   end
 

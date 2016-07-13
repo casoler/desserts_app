@@ -1,7 +1,7 @@
 <% @products.each do |product| %>
   <div class='product'>
     <h3 class="bg-primary">
-      <img src='<%= product.image %>' height='50' width='50'>  
+      <img class="prod_img" src='<%= product.image %>' height='50' width='50'>  
       <a href="/products/<%= product.id %>"><%= product.name %></a> 
       <img src='<%= product.flag_image %>' height='25' width='45'>
     </h3>
