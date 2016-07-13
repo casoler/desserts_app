@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(
+    product = Product.new(
       name: params[:name], 
       price: params[:price], 
       image: params[:image], 
@@ -16,9 +16,10 @@ class ProductsController < ApplicationController
       country_of_origin: params[:country_of_origin], 
       flag_image: params[:flag_image]
     )
-    @product.save
+    product.save
 
-    redirect_to "/products/#{@product.id}"    
+    flash[:success] = "Dessert successfully created!"
+    redirect_to "/products/#{product.id}"    
   end
 
   def show
@@ -30,8 +31,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find_by(id: params[:id])
-    @product.update(
+    product = Product.find_by(id: params[:id])
+    product.update(
       name: params[:name], 
       price: params[:price], 
       image: params[:image], 
@@ -40,13 +41,15 @@ class ProductsController < ApplicationController
       flag_image: params[:flag_image]
     )
 
-    redirect_to "/products/#{@product.id}"
+    flash[:success] = "Dessert successfully updated!"
+    redirect_to "/products/#{product.id}"
   end
 
   def destroy
-    @product = Product.find_by(id: params[:id])
-    @product.destroy
+    product = Product.find_by(id: params[:id])
+    product.destroy
 
+    flash[:success] = "Dessert successfully destroyed!"
     redirect_to "/products"
   end
 end
