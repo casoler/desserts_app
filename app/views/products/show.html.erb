@@ -2,13 +2,19 @@
   <h3 class="bg-primary"><%= @product.name %></h3>
   <h4>Country of Origin: <%= @product.country_of_origin %> </h4>
   <h5><%= @product.description %></h5>
+  <h5>Price: <%= @product.price %></h5>
   <img src='<%= @product.image %>' height='200' width='200' class="img-rounded">
-</div>
 
-<div class='link-to-home-page'>
-  <a href="/products">Back to All Desserts</a>
 </div>
 
 <div class='link-to-home-page'>
   <a href="/products/<%= @product.id %>/edit">Edit this Product</a>
+</div>
+
+<div class='link-to-home-page'>
+  <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
+</div>
+
+<div class='link-to-home-page'>
+  <a href="/products">Back to All Desserts</a>
 </div>
