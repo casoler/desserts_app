@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
+$website-color: #337ab7;
 
+body {
+  font-family: Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
+  background-image: image-url('paisley.png');
 }
 
 h3 {
@@ -33,11 +36,21 @@ a {
   margin:20px;
 
   a {
-  color: #337ab7;
+  color: $website-color;
   }
 }
 
 img.prod_img {
-  border: 1px #337ab7 solid
+  border: 1px $website-color solid
+}
+
+.flag-image img {
+  float:right;
+  padding:0;
+
+}
+
+.discount {
+  color: red;
 }
 
