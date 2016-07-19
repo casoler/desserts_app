@@ -4,6 +4,7 @@
 
 <div class='product'>
   <h3 class="bg-primary"><%= @product.name %></h3>
+  <h4>Supplier: <%= @product.supplier.name %></h4>
   <h4>Country of Origin: <%= @product.country_of_origin %> </h4>
   <h5><%= @product.description %></h5>
   <h5>Price: <%= number_to_currency(@product.price) %> + <%= @product.tax %> (tax): <%= number_to_currency(@product.total_price) %>   
@@ -14,7 +15,9 @@
     <% end %>
   </h5>
 
-  <img src='<%= @product.image %>' height='200' width='200' class="img-rounded">
+  <% @product.images.each do |image| %>
+    <img src='<%= image.url %>' height='200' width='200' class="img-rounded">
+  <% end %>
 
 </div>
 

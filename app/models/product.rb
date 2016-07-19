@@ -1,11 +1,6 @@
 class Product < ActiveRecord::Base
-  # def sale_message
-  #   if price <= 2
-  #     'On Sale!'
-  #   else 
-  #     'Great Price!'
-  #   end
-  # end
+  belongs_to :supplier
+  has_many :images
 
   def discounted?
     price <= 2
@@ -18,10 +13,4 @@ class Product < ActiveRecord::Base
   def total_price
     price + tax
   end
-
-  # def price_class_name
-  #   if price <= 2
-  #     'discount'
-  #   end
-  # end
 end

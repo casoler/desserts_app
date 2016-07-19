@@ -20,7 +20,11 @@
 
           <div class='product'>
             <h3 class="bg-primary">
-              <img class="prod_img" src='<%= product.image %>' height='50' width='50'>  
+              <% if product.images.count >= 1 %>
+                <img class="prod_img" src='<%= product.images.first.url if product.images %>' height='50' width='50'>  
+              <% else %>
+                <img class="prod_img" src='' height='50' width='50'>  
+              <% end %>
               <a href="/products/<%= product.id %>"><%= product.name %></a> 
             </h3>
             <h4>Country of Origin: <%= product.country_of_origin %> </h4>
