@@ -1,7 +1,14 @@
+<% if params[:discounted_only] %>
+  <h3> Discounted Items </h3>
+<% end %>
+
+<div class='sort-block'>
+  <%= label_tag "Sort Prices:" %>
+  <%= link_to "  High - Low", '/products?sort_order=desc' %>
+  <%= link_to "  Low - High", '/products?sort_order=asc' %>
+</div>
+
 <% @products.each_slice(2) do |products| %>
-
-
-
   <div class='row'>
     <% products.each do |product| %>
       <div class="col-md-6">
@@ -10,21 +17,19 @@
           <div class='flag-image'>
             <img src='<%= product.flag_image %>' height='25' width='45'>
           </div>
+
           <div class='product'>
             <h3 class="bg-primary">
               <img class="prod_img" src='<%= product.image %>' height='50' width='50'>  
               <a href="/products/<%= product.id %>"><%= product.name %></a> 
-              
             </h3>
             <h4>Country of Origin: <%= product.country_of_origin %> </h4>
-            <!-- <h5><%#= product.description %></h5> -->
-
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <% end %>
+<% end %>
 
 <div class='link-to-home-page'>
   <%= link_to "Add a new dessert", '/products/new' %>

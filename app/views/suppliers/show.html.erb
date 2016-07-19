@@ -1,0 +1,18 @@
+<div class='link-to-home-page'>
+  <a href="/suppliers">< Back to All Suppliers</a>
+</div>
+
+<div class='supplier'>
+  <h3 class="bg-primary"><%= @supplier.name %></h3>
+  <h5>Email: <%= @supplier.email %> </h5>
+  <h5><%= @supplier.phone %></h5>
+</div>
+
+<div class='link-to-home-page'>
+  <a href="/suppliers/<%= @supplier.id %>/edit">Edit this supplier</a>
+</div>
+
+<div class='link-to-home-page'>
+  <%= link_to "Delete this supplier", "/suppliers/#{@supplier.id}", method: :delete %>
+</div>
+

@@ -1,3 +1,7 @@
+<div class='link-to-home-page'>
+  <a href="/products">< Back to All Desserts</a>
+</div>
+
 <h1> Edit Dessert: </h1>
 <%= form_tag "/products/#{@product.id}", method: 'patch' do %>
   <div  class="form-group">
@@ -28,8 +32,3 @@
     <%= submit_tag 'Change Dessert', class: "btn btn-default" %>
   </div>
 <% end %>
-
-<div class='link-to-home-page'>
-  <a href="/products">Back to All Desserts</a>
-</div>
-

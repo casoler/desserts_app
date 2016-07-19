@@ -1,3 +1,7 @@
+<div class='link-to-home-page'>
+  <a href="/products">< Back to All Desserts</a>
+</div>
+
 <h1> New Dessert: </h1>
 <%= form_tag '/products', method: 'post' do %>
   <div  class="form-group">
@@ -28,8 +32,4 @@
     <%= submit_tag 'Add Dessert', class: "btn btn-default" %>
   </div>
 <% end %>
-
-<div class='link-to-home-page'>
-  <a href="/products">Back to All Desserts</a>
-</div>
 
