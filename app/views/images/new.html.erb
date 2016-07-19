@@ -1,0 +1,16 @@
+<h3> New Image for <%= @product.name %></h3>
+<%= form_tag "products/#{@product.id}/images", method: 'post' do %>
+  <div  class="form-group">
+    <%= label_tag :url %>
+    <%= text_field_tag :url, '', class: 'form-control' %>
+  </div>
+
+ <!--  <div  class="form-group">
+    <%#= label_tag :product_id %>
+    <%#= text_field_tag :product_id, params[:product_id], class: 'form-control' %>
+  </div> -->
+  
+  <div>
+    <%= submit_tag 'Add the Image', class: "btn btn-default"%>
+  </div>
+<% end %>
