@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'images/new'
 
-  get 'images/update'
-
+  get '/' => 'products#index'
   get '/products' => 'products#index'
   get '/products/new' => 'products#new'
   post '/products' => 'products#create'
@@ -21,6 +19,10 @@ Rails.application.routes.draw do
 
   get '/products/:product_id/images/new' => 'images#new'
   post '/products/:product_id/images' => 'images#create'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
