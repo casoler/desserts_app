@@ -1,5 +1,5 @@
 <h3> New Image for <%= @product.name %></h3>
-<%= form_tag "products/#{@product.id}/images", method: 'post' do %>
+<%= form_tag "/products/#{@product.id}/images", method: 'post' do %>
   <div  class="form-group">
     <%= label_tag :url %>
     <%= text_field_tag :url, '', class: 'form-control' %>

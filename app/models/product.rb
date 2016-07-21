@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :supplier
   has_many :images
+  has_many :orders
 
   def discounted?
     price <= 2
@@ -12,5 +13,9 @@ class Product < ActiveRecord::Base
 
   def total_price
     price + tax
+  end
+
+  def friendly_time
+    created_at.strftime('%Y-%m-%d')
   end
 end

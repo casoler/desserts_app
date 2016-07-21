@@ -1,0 +1,25 @@
+<h2>You ordered something!</h2>
+
+<div>
+  <h4>Order ID: <%= @order.id %> </h4>
+
+  <h4>Date Ordered: <%= @order.friendly_time %> </h4>
+
+  <h4>Email: <%= @order.user.email %> </h4>
+
+  <h4>Product: <%= @order.product.name %> </h4>
+
+  <h4><%= image_tag @order.product.images.first.url %> </h4>
+
+  <h4>Quantity: <%= @order.quantity %> </h4>
+
+  <h4>Subtotal: <%= number_to_currency(@order.subtotal) %> </h4>
+
+  <h4>Tax: <%= number_to_currency(@order.tax) %> </h4>
+
+  <h4>Total: <%= number_to_currency(@order.total) %> </h4>
+
+
+
+
+</div>
