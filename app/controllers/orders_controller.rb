@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   def create
-    @product = Product.find_by(id: params[:product_id])
-    price = @product.price * params[:quantity].to_i
-    tax = @product.tax * params[:quantity].to_i
+    product = Product.find_by(id: params[:product_id])
+    price = product.price * params[:quantity].to_i
+    tax = product.tax * params[:quantity].to_i
 
     order = Order.new(
       user_id: current_user.id, 
@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     )
     order.save
 
+    flash[:success] = 'Your order has been placed!'
     redirect_to "/orders/#{order.id}"  
   end
 
