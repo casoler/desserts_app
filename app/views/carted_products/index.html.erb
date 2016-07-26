@@ -1,0 +1,34 @@
+<h3>Your Cart</h3>
+
+<div class='table table-striped' %>
+  <div class='row'>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+    </tr>
+  </div>
+
+  
+  <% @carted_products.each do |carted_product| %>
+    <div class='row'>
+      <tr>
+        <td><%= carted_product.product_id %></td>
+        <td><img src='<%= carted_product.product.images.first.url %>' class="img-rounded" width='100px'></td>
+        <td><%= carted_product.product.name %></td>
+        <td><%= carted_product.quantity %></td>
+        <td><%= link_to 'Delete from cart', "/carted_products/#{carted_product.id}", method: :post %></td>
+      </tr>
+    </div>
+  <% end %>
+ 
+</div>
+
+<div class='order_form'>
+  <%= form_tag '/orders', method: 'post' do %>
+    <div class="form-group">
+      <%= submit_tag 'Buy Now!', class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>
