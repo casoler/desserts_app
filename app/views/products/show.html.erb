@@ -28,9 +28,6 @@
     </ul>
   </div>
 
-
-
-
   <div class='order_form'>
     <%= form_tag '/carted_products', method: 'post' do %>
       <div class="form-group">
@@ -47,15 +44,16 @@
   </div>
 </div>
 
-<div class='link-to-home-page'>
-  <a href="/products/<%= @product.id %>/images/new">Add an Image to this Product</a>
-</div>
+<% if current_user && current_user.admin %>
+  <div class='link-to-home-page'>
+    <a href="/products/<%= @product.id %>/images/new">Add an Image to this Product</a>
+  </div>
 
-<div class='link-to-home-page'>
-  <a href="/products/<%= @product.id %>/edit">Edit this Product</a>
-</div>
+  <div class='link-to-home-page'>
+    <a href="/products/<%= @product.id %>/edit">Edit this Product</a>
+  </div>
 
-<div class='link-to-home-page'>
-  <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
-</div>
-
+  <div class='link-to-home-page'>
+    <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
+  </div>
+<% end %>

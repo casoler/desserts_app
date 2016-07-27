@@ -49,9 +49,17 @@
           </form>
 
           <ul class="nav navbar-nav navbar-right">
-
             <% if current_user %>
-              <li><a href="/carted_products">Shopping Cart</a></li>
+              <li>
+                <a href="/carted_products">
+                  <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                      <%= @cart_count %>
+                    </span>
+                  </button>
+                </a>
+              </li>
+              <li><h5><%= current_user.email %></h5></li>
               <li><a href="/logout">Logout</a></li>
             <% else %>
               <li><a href="/signup">Signup</a></li>

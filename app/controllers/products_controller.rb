@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     if params[:sort_attribute] && params[:sort_order]
@@ -29,7 +30,7 @@ class ProductsController < ApplicationController
     product.save
 
     flash[:success] = "Dessert successfully created!"
-    redirect_to "/products/#{product.id}"    
+    redirect_to "/products/#{product.id}"  
   end
 
   def show

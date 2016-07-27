@@ -1,22 +1,22 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @carted_products = CartedProduct.where(user_id: current_user.id, status: 'carted')
+    # current_user.carted_products.where(status: 'carted')
 
     if @carted_products.empty?
-      flash[:success] = 'You have no items in your cart.  Buy now!'
+      flash[:warning] = 'You have no items in your cart.  Buy now!'
       redirect_to '/products'
     end
   end
-
 
   def create
     carted_product = CartedProduct.new(
       user_id: current_user.id, 
       product_id: params[:product_id],
       quantity: params[:quantity],
-      status: 'carted',
-      order_id: nil 
+      status: 'carted'
     )
     carted_product.save
 

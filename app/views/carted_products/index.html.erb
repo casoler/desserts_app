@@ -1,28 +1,39 @@
 <h3>Your Cart</h3>
 
 <div class='table table-striped' %>
-  <div class='row'>
-    <tr>
-      <th>ID</th>
-      <th></th>
-      <th>Product Name</th>
-      <th>Quantity</th>
-    </tr>
-  </div>
-
-  
-  <% @carted_products.each do |carted_product| %>
-    <div class='row'>
+  <table>
+    <thead>
+    <!-- <div class='row'> -->
       <tr>
-        <td><%= carted_product.product_id %></td>
-        <td><img src='<%= carted_product.product.images.first.url %>' class="img-rounded" width='100px'></td>
-        <td><%= carted_product.product.name %></td>
-        <td><%= carted_product.quantity %></td>
-        <td><%= link_to 'Delete from cart', "/carted_products/#{carted_product.id}", method: :post %></td>
+        <th>ID</th>
+        <th></th>
+        <th>Product Name</th>
+        <th>Quantity</th>
       </tr>
-    </div>
-  <% end %>
- 
+    </thead>
+    <!-- </div> -->
+    <tbody>
+    <% @carted_products.each do |carted_product| %>
+      <!-- <div class='row'> -->
+        <tr>
+          <td><%= carted_product.product_id %></td>
+          <td>
+            <% if carted_product.product.images.count >= 1 %>
+              <img src='<%= carted_product.product.images.first.url %>' class="img-rounded" width='100px'>
+            <% else %>
+              <img src='' class="img-rounded" width='100px'>
+            <% end %>
+          </td>  
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.quantity %></td>
+          <td class='delete-link'><%= link_to 'Delete from cart', "/carted_products/#{carted_product.id}", method: :patch %></td>
+        </tr>
+      <!-- </div> -->
+    <% end %>
+    </tbody>
+   
+
+  </table>
 </div>
 
 <div class='order_form'>

@@ -10,17 +10,18 @@
   <h4>Order ID: <%= @order.id + 4356 %> </h4>
   <h4>Date Ordered: <%= @order.friendly_time %> </h4>
 
-  <% @order.carted_products.each do |carted_product| %>
-
-    <h4>Product: <%= carted_product.product.name %> </h4>
-    <h4>Quantity: <%= carted_product.quantity %> </h4>
-
-    <% if carted_product.product.images.first %>
-      <h4><%= image_tag carted_product.product.images.first.url %> </h4>
-    <% end %>
-  <% end %>
-
   <h4>Subtotal: <%= number_to_currency(@order.subtotal) %> </h4>
   <h4>Tax: <%= number_to_currency(@order.tax) %> </h4>
   <h4>Total: <%= number_to_currency(@order.total) %> </h4>
 </div>
+
+<ul>
+  <% @order.carted_products.each do |carted_product| %>
+    <li>Product: <%= carted_product.product.name %> </li>
+    <li>Quantity: <%= carted_product.quantity %> </li>
+
+    <% if carted_product.product.images.first %>
+      <li><%= image_tag carted_product.product.images.first.url %> </li>
+    <% end %>
+  <% end %>
+</ul>
