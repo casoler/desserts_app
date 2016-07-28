@@ -16,21 +16,24 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def create
-    product = Product.new(
+    @product = Product.new(
       name: params[:name], 
       price: params[:price], 
-      image: params[:image], 
       description: params[:description], 
       country_of_origin: params[:country_of_origin], 
-      flag_image: params[:flag_image]
+      flag_image: params[:flag_image],
+      supplier_id: params[:supplier_id]
     )
-    product.save
-
-    flash[:success] = "Dessert successfully created!"
-    redirect_to "/products/#{product.id}"  
+    if @product.save
+      flash[:success] = "Dessert successfully created!"
+      redirect_to "/products/#{@product.id}"  
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -46,18 +49,22 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find_by(id: params[:id])
-    product.update(
+    @product = Product.find_by(id: params[:id])
+
+    if @product.update(
       name: params[:name], 
       price: params[:price], 
-      image: params[:image], 
       description: params[:description], 
       country_of_origin: params[:country_of_origin], 
-      flag_image: params[:flag_image]
-    )
+      flag_image: params[:flag_image],
+      supplier_id: params[:supplier_id]
+      )
 
-    flash[:success] = "Dessert <strong>successfully</strong> updated!"
-    redirect_to "/products/#{product.id}"
+      flash[:success] = "Dessert successfully updated!"
+      redirect_to "/products/#{@product.id}"
+    else 
+      render 'edit'
+    end
   end
 
   def destroy
