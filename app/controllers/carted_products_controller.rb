@@ -18,6 +18,7 @@ class CartedProductsController < ApplicationController
       status: 'carted'
     )
     if carted_product.save
+      session[:cart_count] = nil
       flash[:success] = 'The item has been added to the cart.'
       redirect_to '/carted_products'
     else 
@@ -29,7 +30,8 @@ class CartedProductsController < ApplicationController
     carted_product = CartedProduct.find_by(id: params[:id])
     carted_product.status = 'removed'
     carted_product.save
-
+    session[:cart_count] = nil    
+      
     flash[:success] = "Product removed from cart"
     redirect_to "/carted_products"
   end
